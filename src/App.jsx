@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import piyushPhoto from './assets/piyush.jpg'
 
 const COLORS = {
   bg: "#0a0a0f",
@@ -549,7 +550,7 @@ export default function Portfolio() {
             <div className="hero-photo-ring" />
             <div className="hero-photo-ring-inner" />
             <img
-              src="/src/assets/piyush.jpg"
+              src={piyushPhoto}
               alt="Piyush Sarkar"
               className="hero-photo"
             />
