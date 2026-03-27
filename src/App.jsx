@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import piyushPhoto from './assets/piyush.jpg'
 
+
 const COLORS = {
   bg: "#0a0a0f",
   surface: "#12121a",
@@ -25,6 +26,12 @@ const style = `
     font-family: 'Syne', sans-serif;
     overflow-x: hidden;
     cursor: none;
+  }
+
+  @media (hover: none) and (pointer: coarse) {
+    body { cursor: auto; }
+    .cursor, .cursor-ring { display: none !important; }
+    .nav-links a, .btn-primary, .btn-ghost, .project-card, .contact-link { cursor: pointer; }
   }
 
   ::selection { background: ${COLORS.violet}44; color: ${COLORS.lavender}; }
@@ -482,7 +489,10 @@ export default function Portfolio() {
   const ringRef = useRef(null);
   const [activeSection, setActiveSection] = useState("home");
 
+  const isTouch = typeof window !== "undefined" && window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+
   useEffect(() => {
+    if (isTouch) return;
     const move = (e) => {
       if (cursorRef.current) {
         cursorRef.current.style.left = e.clientX + "px";
